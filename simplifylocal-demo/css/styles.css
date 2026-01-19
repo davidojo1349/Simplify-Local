@@ -1718,3 +1718,338 @@ footer {
         transform: scale(0.9);
     }
 }
+/* ===== BOOK CALL PAGE STYLES ===== */
+.hero-book {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: white;
+    padding: 100px 0 80px;
+    text-align: center;
+}
+
+.hero-book .hero-subtitle {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 20px auto 30px;
+    opacity: 0.9;
+}
+
+.hero-features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 12px 20px;
+    border-radius: 50px;
+    backdrop-filter: blur(10px);
+}
+
+.feature i {
+    color: #4CAF50;
+}
+
+.booking-section {
+    padding: 80px 0;
+    background: #f8f9fa;
+}
+
+.booking-container {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+@media (max-width: 992px) {
+    .booking-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
+.booking-info h2 {
+    color: #1e3c72;
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+.expectation-card {
+    background: white;
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    transition: transform 0.3s ease;
+}
+
+.expectation-card:hover {
+    transform: translateY(-5px);
+}
+
+.expectation-icon {
+    background: #1e3c72;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.expectation-content h3 {
+    color: #1e3c72;
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+}
+
+.expectation-content p {
+    color: #666;
+    line-height: 1.6;
+}
+
+.preparation-tips {
+    background: white;
+    border-radius: 10px;
+    padding: 25px;
+    margin-top: 40px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    border-left: 4px solid #4CAF50;
+}
+
+.preparation-tips h3 {
+    color: #1e3c72;
+    margin-bottom: 15px;
+}
+
+.preparation-tips ul {
+    list-style: none;
+    padding: 0;
+}
+
+.preparation-tips li {
+    padding: 8px 0;
+    padding-left: 25px;
+    position: relative;
+    color: #666;
+}
+
+.preparation-tips li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+.booking-calendar {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.booking-calendar h2 {
+    color: #1e3c72;
+    margin-bottom: 10px;
+}
+
+.calendar-subtitle {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 1rem;
+}
+
+.calendly-inline-widget {
+    width: 100% !important;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+.calendar-fallback {
+    text-align: center;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.fallback-text {
+    margin: 0;
+}
+
+.fallback-text a {
+    color: #1e3c72;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.fallback-text a:hover {
+    text-decoration: underline;
+}
+
+.calendar-notes {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.calendar-notes h3 {
+    color: #1e3c72;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.calendar-notes ul {
+    list-style: none;
+    padding: 0;
+}
+
+.calendar-notes li {
+    padding: 8px 0;
+    padding-left: 30px;
+    position: relative;
+    color: #666;
+}
+
+.calendar-notes li i {
+    position: absolute;
+    left: 0;
+    top: 10px;
+    color: #1e3c72;
+}
+
+/* FAQ Section Specific to Book Page */
+.faq-book {
+    padding: 80px 0;
+    background: white;
+}
+
+.faq-book .section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.faq-book .faq-grid {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-book .faq-item {
+    margin-bottom: 15px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.faq-book .faq-question {
+    width: 100%;
+    padding: 20px 25px;
+    background: #f8f9fa;
+    border: none;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1e3c72;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.faq-book .faq-question:hover {
+    background: #e9ecef;
+}
+
+.faq-book .faq-answer {
+    padding: 0 25px;
+    background: white;
+    display: none;
+}
+
+.faq-book .faq-answer p {
+    padding: 20px 0;
+    margin: 0;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* CTA Section */
+.cta-book {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: white;
+    text-align: center;
+}
+
+.cta-book h2 {
+    color: white;
+    margin-bottom: 20px;
+}
+
+.cta-book p {
+    max-width: 600px;
+    margin: 0 auto 30px;
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.cta-book .btn-secondary {
+    background: white;
+    color: #1e3c72;
+    border: none;
+}
+
+.cta-book .btn-secondary:hover {
+    background: #f8f9fa;
+    transform: translateY(-3px);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .hero-book {
+        padding: 80px 0 60px;
+    }
+    
+    .hero-features {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .feature {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .booking-calendar {
+        padding: 20px;
+    }
+    
+    .expectation-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .expectation-icon {
+        margin: 0 auto;
+    }
+}

@@ -293,3 +293,46 @@ document.addEventListener('DOMContentLoaded', () => {
         scrollObserver.observe(el);
     });
 });
+
+// FAQ Accordion for Book Call Page
+function initBookCallPage() {
+    // FAQ Accordion
+    const faqQuestions = document.querySelectorAll('.faq-book .faq-question');
+    
+    if (faqQuestions.length > 0) {
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const icon = question.querySelector('i');
+                
+                // Toggle current FAQ
+                if (answer.style.display === 'block') {
+                    answer.style.display = 'none';
+                    icon.classList.remove('fa-chevron-up');
+                    icon.classList.add('fa-chevron-down');
+                } else {
+                    answer.style.display = 'block';
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                }
+            });
+        });
+    }
+    
+    // Calendly fallback button
+    const openCalendlyBtn = document.getElementById('openCalendly');
+    if (openCalendlyBtn) {
+        openCalendlyBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (typeof Calendly !== 'undefined') {
+                Calendly.initPopupWidget({url: 'https://calendly.com/simplifylocal/free-consultation'});
+            }
+            return false;
+        });
+    }
+}
+
+// Initialize when DOM is loaded
+if (document.querySelector('.page-book-call')) {
+    document.addEventListener('DOMContentLoaded', initBookCallPage);
+}
