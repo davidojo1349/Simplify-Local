@@ -191,7 +191,7 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: var(--secondary-color);
+    background: var(--primary-color);;
     color: white;
     padding: 16px 32px;
     border-radius: 8px;
