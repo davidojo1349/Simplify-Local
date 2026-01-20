@@ -2114,3 +2114,71 @@ a.button {
     border-radius: 10px;
     margin: 20px 0;
 }
+
+/* ===== FIX FOR BUTTON FADING ===== */
+/* Target the specific navigation button */
+.nav-links .button {
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease !important;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Remove opacity/filter changes on active state */
+.nav-links .button:active,
+.nav-links .button.active:active,
+.nav-links a.button:active {
+    opacity: 1 !important;
+    filter: none !important;
+    transform: translateY(2px) !important;
+    background-color: #45a049 !important; /* Slightly darker green */
+    box-shadow: 0 2px 8px rgba(76, 175, 80, 0.4) !important;
+}
+
+/* Remove mobile tap highlight */
+.nav-links .button,
+.nav-links a.button {
+    -webkit-tap-highlight-color: transparent !important;
+    -webkit-touch-callout: none !important;
+    -webkit-user-select: none !important;
+    user-select: none !important;
+}
+
+/* Add a subtle ripple effect for better UX */
+.nav-links .button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.3);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%, -50%);
+    transform-origin: 50% 50%;
+}
+
+.nav-links .button:focus:not(:active)::after {
+    animation: ripple 0.6s ease-out;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(20, 20);
+        opacity: 0;
+    }
+}
+
+/* Also fix other buttons to be consistent */
+.btn-primary:active,
+.btn-secondary:active,
+.price-btn:active,
+.niche-btn:active {
+    opacity: 1 !important;
+    filter: none !important;
+    transform: translateY(2px) !important;
+}
