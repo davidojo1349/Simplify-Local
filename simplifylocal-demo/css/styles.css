@@ -2053,3 +2053,64 @@ footer {
         margin: 0 auto;
     }
 }
+
+/* ===== BUTTON ACTIVE STATE FIXES ===== */
+.button-pressed {
+    transform: translateY(2px) !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2) !important;
+    opacity: 1 !important;
+    filter: none !important;
+}
+
+/* Remove default button active fading */
+.button:active,
+.btn-primary:active,
+.btn-secondary:active,
+.price-btn:active,
+.niche-btn:active,
+.service-link:active,
+.card-link:active {
+    opacity: 1 !important;
+    filter: none !important;
+    transform: translateY(2px) !important;
+}
+
+/* Specifically target navigation button */
+.nav-links .button {
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease !important;
+}
+
+.nav-links .button:active {
+    background-color: #45a049 !important;
+    transform: translateY(2px) !important;
+    box-shadow: 0 2px 8px rgba(76, 175, 80, 0.4) !important;
+}
+
+/* Remove mobile tap highlight */
+button,
+.button,
+.btn-primary,
+.btn-secondary,
+.price-btn,
+niche-btn,
+a.button {
+    -webkit-tap-highlight-color: transparent !important;
+    outline: none !important;
+}
+
+/* Calendly widget styling */
+.calendly-inline-widget {
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 20px 0;
+    min-height: 700px;
+}
+
+.calendar-fallback {
+    display: none;
+    text-align: center;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    margin: 20px 0;
+}

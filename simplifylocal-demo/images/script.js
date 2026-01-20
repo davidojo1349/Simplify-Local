@@ -104,7 +104,12 @@ if (newsletterForm) {
 document.addEventListener('DOMContentLoaded', () => {
     highlightActiveNiche();
     
-    // Add fade-in animation for service cards
+    // ========== ADD THESE 2 LINES ==========
+    fixButtonActiveStates();
+    initPageSpecificFeatures();
+    // =======================================
+    
+    // Rest of your existing code stays exactly as it is...
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -335,4 +340,124 @@ function initBookCallPage() {
 // Initialize when DOM is loaded
 if (document.querySelector('.page-book-call')) {
     document.addEventListener('DOMContentLoaded', initBookCallPage);
+}
+
+// ========== NEW FUNCTIONS TO ADD ==========
+
+// Fix for button active states to prevent fading
+function fixButtonActiveStates() {
+    const buttons = document.querySelectorAll('.button, .btn-primary, .btn-secondary, .price-btn, .niche-btn');
+    
+    buttons.forEach(button => {
+        button.style.webkitTapHighlightColor = 'transparent';
+        
+        button.addEventListener('mousedown', function(e) {
+            this.classList.add('button-pressed');
+        });
+        
+        button.addEventListener('mouseup', function() {
+            this.classList.remove('button-pressed');
+        });
+        
+        button.addEventListener('mouseleave', function() {
+            this.classList.remove('button-pressed');
+        });
+        
+        button.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            this.classList.add('button-pressed');
+        });
+        
+        button.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            this.classList.remove('button-pressed');
+        });
+    });
+}
+
+// Calendly integration for book-call page
+function initCalendlyIntegration() {
+    const isBookCallPage = window.location.pathname.includes('book-call') || 
+                          document.querySelector('.booking-calendar');
+    
+    if (!isBookCallPage) return;
+    
+    if (typeof Calendly === 'undefined') {
+        const script = document.createElement('script');
+        script.src = 'https://assets.calendly.com/assets/external/widget.js';
+        script.async = true;
+        document.head.appendChild(script);
+    }
+    
+    function initCalendly() {
+        if (typeof Calendly !== 'undefined') {
+            const calendlyWidget = document.getElementById('calendly-widget');
+            if (calendlyWidget) {
+                Calendly.initInlineWidget({
+                    url: 'https://calendly.com/simplifylocal/free-consultation',
+                    parentElement: calendlyWidget,
+                    prefill: {},
+                    utm: {}
+                });
+            }
+            
+            const openCalendlyBtn = document.getElementById('openCalendly');
+            if (openCalendlyBtn) {
+                openCalendlyBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    Calendly.initPopupWidget({url: 'https://calendly.com/simplifylocal/free-consultation'});
+                    return false;
+                });
+            }
+        }
+    }
+    
+    if (typeof Calendly !== 'undefined') {
+        initCalendly();
+    } else {
+        const checkCalendly = setInterval(() => {
+            if (typeof Calendly !== 'undefined') {
+                clearInterval(checkCalendly);
+                initCalendly();
+            }
+        }, 500);
+        
+        setTimeout(() => {
+            clearInterval(checkCalendly);
+            const fallbackElement = document.querySelector('.calendar-fallback');
+            if (fallbackElement) {
+                fallbackElement.style.display = 'block';
+            }
+        }, 10000);
+    }
+}
+
+// Page-specific initialization
+function initPageSpecificFeatures() {
+    const path = window.location.pathname;
+    const pageName = path.split('/').pop().split('.')[0];
+    
+    switch(pageName) {
+        case 'book-call':
+        case 'book-call.html':
+            initCalendlyIntegration();
+            
+            setTimeout(() => {
+                const firstFAQ = document.querySelector('.faq-book .faq-question');
+                if (firstFAQ) {
+                    firstFAQ.click();
+                }
+            }, 500);
+            break;
+            
+        case 'contact':
+        case 'contact.html':
+            setTimeout(() => {
+                const firstFAQ = document.querySelector('.faq-question');
+                if (firstFAQ) {
+                    firstFAQ.click();
+                }
+            }, 500);
+            break;
+    }
 }
