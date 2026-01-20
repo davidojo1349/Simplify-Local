@@ -2182,3 +2182,51 @@ a.button {
     filter: none !important;
     transform: translateY(2px) !important;
 }
+/* ===== AGGRESSIVE FIX FOR BUTTON FADING ===== */
+/* Reset all button active states */
+*:active {
+    opacity: 1 !important;
+}
+
+/* Specifically target the book call button */
+.nav-links .button,
+.nav-links a[href*="book-call"] {
+    transition: none !important;
+}
+
+.nav-links .button:active {
+    animation: buttonPress 0.2s ease !important;
+    background-color: #45a049 !important;
+    transform: translateY(2px) !important;
+    box-shadow: 
+        0 4px 8px rgba(76, 175, 80, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+}
+
+@keyframes buttonPress {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(3px);
+    }
+    100% {
+        transform: translateY(2px);
+    }
+}
+
+/* Disable default browser active styles */
+.nav-links .button {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+    -webkit-tap-highlight-color: transparent !important;
+    outline: none !important;
+}
+
+/* For mobile devices */
+@media (hover: none) and (pointer: coarse) {
+    .nav-links .button:active {
+        background-color: #45a049 !important;
+        transform: scale(0.98) !important;
+        transition: transform 0.1s ease !important;
+    }
+}
