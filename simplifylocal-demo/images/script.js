@@ -461,3 +461,60 @@ function initPageSpecificFeatures() {
             break;
     }
 }
+// Fix button active states (add this function)
+function fixButtonFading() {
+    const buttons = document.querySelectorAll('.nav-links .button, a.button');
+    
+    buttons.forEach(button => {
+        // Prevent default on mousedown
+        button.addEventListener('mousedown', function(e) {
+            e.preventDefault();
+            this.style.transition = 'none';
+            this.style.opacity = '1';
+            this.style.transform = 'translateY(2px)';
+            this.style.backgroundColor = '#45a049';
+        });
+        
+        button.addEventListener('mouseup', function() {
+            this.style.transition = 'background-color 0.3s ease, transform 0.2s ease';
+            this.style.transform = '';
+            setTimeout(() => {
+                this.style.backgroundColor = '';
+            }, 200);
+        });
+        
+        button.addEventListener('mouseleave', function() {
+            this.style.transition = 'background-color 0.3s ease, transform 0.2s ease';
+            this.style.transform = '';
+            this.style.backgroundColor = '';
+        });
+        
+        // For touch devices
+        button.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            this.style.transition = 'none';
+            this.style.opacity = '1';
+            this.style.transform = 'scale(0.98)';
+            this.style.backgroundColor = '#45a049';
+        });
+        
+        button.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            this.style.transition = 'background-color 0.3s ease, transform 0.2s ease';
+            this.style.transform = '';
+            setTimeout(() => {
+                this.style.backgroundColor = '';
+            }, 200);
+        });
+    });
+}
+
+// Call it in your DOMContentLoaded
+document.addEventListener('DOMContentLoaded', () => {
+    // ... your existing code ...
+    
+    // Add this line:
+    fixButtonFading();
+    
+    // ... rest of your existing code ...
+});
