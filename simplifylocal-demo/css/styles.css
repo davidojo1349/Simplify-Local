@@ -2230,3 +2230,35 @@ a.button {
         transition: transform 0.1s ease !important;
     }
 }
+/* Form Message Styles */
+.form-message {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.form-message p {
+    margin: 0;
+    flex: 1;
+}
+
+.close-message {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+    margin-left: 15px;
+    flex-shrink: 0;
+}
+
+.close-message:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
