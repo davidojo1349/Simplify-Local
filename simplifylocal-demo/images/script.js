@@ -1,42 +1,78 @@
-// ========== EMAILJS CONFIGURATION ==========
-// Replace these with your actual EmailJS IDs
-window.EMAILJS_CONFIG = {
-    USER_ID: 'OAu2A8_bcxDNyZT7y',
-    SERVICE_ID: 'service_gq205g3',
-    TEMPLATE_ID: 'template_5btqf7q'
-};
+// ========== MOBILE MENU FIRST - PRIORITY ==========
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🚀 Loading mobile menu (priority)...');
+    
+    // Mobile Navigation Toggle - LOADS FIRST
+    const mobileToggle = document.getElementById('mobileToggle');
+    const navLinks = document.getElementById('navLinks');
 
-console.log('EmailJS Config:', window.EMAILJS_CONFIG);
-
-// Initialize EmailJS
-if (EMAILJS_CONFIG.USER_ID) {
-    emailjs.init(EMAILJS_CONFIG.USER_ID);
-    console.log('EmailJS initialized with User ID:', EMAILJS_CONFIG.USER_ID);
-} else {
-    console.warn('EmailJS not initialized - missing User ID');
-}
-
-// Mobile Navigation Toggle
-const mobileToggle = document.getElementById('mobileToggle');
-const navLinks = document.getElementById('navLinks');
-
-if (mobileToggle && navLinks) {
-    mobileToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        mobileToggle.innerHTML = navLinks.classList.contains('active') 
-            ? '<i class="fas fa-times"></i>' 
-            : '<i class="fas fa-bars"></i>';
-    });
-
-    // Close mobile menu when clicking a link
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-            mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+    if (mobileToggle && navLinks) {
+        console.log('✅ Setting up hamburger menu');
+        
+        mobileToggle.addEventListener('click', () => {
+            console.log('🍔 Hamburger clicked');
+            navLinks.classList.toggle('active');
+            mobileToggle.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
         });
-    });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        console.log('✅ Hamburger menu ready');
+    }
+    
+    // Rest of your non-EmailJS code continues here...
+    // Navbar scroll effect, newsletter forms, etc.
+});
+
+// ========== EMAILJS - SAFE LOAD (ONLY ON CONTACT PAGE) ==========
+// Only load EmailJS on pages that need it
+function loadEmailJSIfNeeded() {
+    // Only run on contact page
+    if (!window.location.pathname.includes('/contact')) {
+        console.log('Not contact page, skipping EmailJS');
+        return;
+    }
+    
+    console.log('📧 Loading EmailJS for contact page...');
+    
+    // Safe initialization
+    function safeInit() {
+        try {
+            if (typeof emailjs === 'undefined') {
+                console.warn('EmailJS library not loaded');
+                return;
+            }
+            
+            const config = {
+                USER_ID: 'OAu2A8_bcxDNyZT7y',
+                SERVICE_ID: 'service_gq205g3',
+                TEMPLATE_ID: 'template_5btqf7q'
+            };
+            
+            if (config.USER_ID) {
+                emailjs.init(config.USER_ID);
+                window.EMAILJS_CONFIG = config;
+                console.log('✅ EmailJS ready for contact form');
+            }
+        } catch (error) {
+            console.error('EmailJS error (non-fatal):', error);
+        }
+    }
+    
+    // Wait a bit for everything to load
+    setTimeout(safeInit, 2000);
 }
 
+// Load EmailJS only when needed
+window.addEventListener('load', loadEmailJSIfNeeded);
 // Navbar scroll effect
 const mainNav = document.querySelector('.main-nav');
 window.addEventListener('scroll', () => {
@@ -543,12 +579,12 @@ function fixButtonActiveStates() {
         });
         
         button.addEventListener('touchstart', function(e) {
-            e.preventDefault();
+            //e.preventDefault();
             this.classList.add('button-pressed');
         });
         
         button.addEventListener('touchend', function(e) {
-            e.preventDefault();
+            //e.preventDefault();
             this.classList.remove('button-pressed');
         });
     });
@@ -670,7 +706,7 @@ function fixButtonFading() {
         
         // For touch devices
         button.addEventListener('touchstart', function(e) {
-            e.preventDefault();
+            //e.preventDefault();
             this.style.transition = 'none';
             this.style.opacity = '1';
             this.style.transform = 'scale(0.98)';
@@ -678,7 +714,7 @@ function fixButtonFading() {
         });
         
         button.addEventListener('touchend', function(e) {
-            e.preventDefault();
+            //e.preventDefault();
             this.style.transition = 'background-color 0.3s ease, transform 0.2s ease';
             this.style.transform = '';
             setTimeout(() => {
