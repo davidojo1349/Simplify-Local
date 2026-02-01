@@ -14,6 +14,36 @@
       "source": "/home/:path*",
       "destination": "/:path*",
       "permanent": true
+    },
+    {
+      "source": "/pricing",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/pricing/",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/services/",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/book-call/",
+      "destination": "/book-call",
+      "permanent": true
+    },
+    {
+      "source": "/gallery/",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/gallery",
+      "destination": "/services",
+      "permanent": true
     }
   ]
 }
