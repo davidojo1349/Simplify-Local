@@ -41,6 +41,11 @@
       "permanent": true
     },
     {
+      "source": "/demo-booking",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
       "source": "/gallery",
       "destination": "/services",
       "permanent": true
